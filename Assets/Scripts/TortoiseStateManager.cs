@@ -42,6 +42,11 @@ namespace PetGame
             currentState.UpdateState();
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            currentState.OnCollisionEnter();
+        }
+
         /*public void SwitchState(TortoiseBaseState state)
         {
             currentState = state;

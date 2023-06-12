@@ -22,7 +22,7 @@ namespace PetGame
 
         public override void OnCollisionEnter()
         {
-
+            
         }
 
     }

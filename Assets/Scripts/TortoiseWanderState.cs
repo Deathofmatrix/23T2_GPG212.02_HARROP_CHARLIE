@@ -33,7 +33,7 @@ namespace PetGame
 
         public override void ExitState()
         {
-
+            _ctx.speed = 0; 
         } 
 
         public override void OnCollisionEnter()
@@ -63,7 +63,7 @@ namespace PetGame
 
         private void Move(bool moveRight)
         {
-            _ctx.speed = moveRight ? 2 : -2;
+            _ctx.speed = moveRight ? 3 : -3;
             _ctx.isMoving = true;
             _ctx.animator.SetBool("isMoving", true);
             _ctx.spriteRenderer.flipX = !moveRight;
