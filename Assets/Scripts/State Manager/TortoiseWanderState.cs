@@ -47,10 +47,12 @@ namespace PetGame
 
             if (pick == 0)
             {
+                _ctx.moveRight = true;
                 Move();
             }
             else if (pick == 1)
             {
+                _ctx.moveRight = false;
                 Move();
             }
             else if (pick == 2)

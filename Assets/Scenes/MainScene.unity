@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 37914473}
   - component: {fileID: 37914477}
   - component: {fileID: 37914478}
+  - component: {fileID: 37914479}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -260,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3855b7e45fd874bbf6434fb0cabd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetJoint: {fileID: 0}
+  targetJoint: {fileID: 37914478}
 --- !u!257 &37914478
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -280,6 +281,18 @@ TargetJoint2D:
   m_MaxForce: 10000
   m_DampingRatio: 1
   m_Frequency: 5
+--- !u!114 &37914479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37914472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c44f0f5c0fd2394d890631aee52c712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &116916540
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,8 +318,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116916540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.365088, y: -2.2291906, z: 10.100121}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 7.86, y: -2.2291906, z: 10.100121}
+  m_LocalScale: {x: 4.01, y: 1.24, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1490661752}
@@ -351,7 +364,7 @@ GameObject:
   - component: {fileID: 306627899}
   - component: {fileID: 306627898}
   m_Layer: 5
-  m_Name: Play - Button
+  m_Name: Ball - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -422,9 +435,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1997261401}
-        m_TargetAssemblyTypeName: PetGame.TortoiseStateManager, Assembly-CSharp
-        m_MethodName: SwitchToPlaying
+      - m_Target: {fileID: 37914479}
+        m_TargetAssemblyTypeName: PetGame.BallSpawner, Assembly-CSharp
+        m_MethodName: SpawnBall
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -530,7 +543,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'PLAY?
+  m_text: 'BALL
 
 '
   m_isRightToLeft: 0
@@ -692,7 +705,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 451537570}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1997261401}
+        m_TargetAssemblyTypeName: PetGame.TortoiseStateManager, Assembly-CSharp
+        m_MethodName: SwitchToEating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &451537570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,8 +1137,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567215745}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.645912, y: -2.2291906, z: 10.100121}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.1574225, y: -2.2291906, z: 10.100121}
+  m_LocalScale: {x: 4.01, y: 1.24, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1490661752}
@@ -1492,7 +1517,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -3.5147185}
+  m_Offset: {x: -0.05548477, y: -3.5147185}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1503,7 +1528,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 2.9705632}
+  m_Size: {x: 10.499367, y: 2.970563}
   m_EdgeRadius: 0
 --- !u!212 &1052318215
 SpriteRenderer:
@@ -1844,7 +1869,7 @@ Transform:
   m_GameObject: {fileID: 1775849913}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.72945833, y: 3.7575395, z: 10.100121}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.76, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1490661752}
@@ -2043,7 +2068,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1974591075}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1997261401}
+        m_TargetAssemblyTypeName: PetGame.TortoiseStateManager, Assembly-CSharp
+        m_MethodName: SwitchToEating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1974591075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2093,7 +2130,7 @@ GameObject:
   - component: {fileID: 1997261398}
   - component: {fileID: 1997261397}
   - component: {fileID: 1997261396}
-  - component: {fileID: 1997261400}
+  - component: {fileID: 1997261404}
   - component: {fileID: 1997261399}
   - component: {fileID: 1997261401}
   - component: {fileID: 1997261403}
@@ -2215,32 +2252,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &1997261400
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1997261395}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.15335257}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.6932949}
-  m_EdgeRadius: 0
 --- !u!114 &1997261401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2259,7 +2270,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1997261397}
   heartSprite: {fileID: 1921294483}
   ball: {fileID: 37914472}
-  food: {fileID: 0}
+  food: {fileID: 2059475040}
   mainCamera: {fileID: 0}
   movementTimer: 0
   movementDuration: 3
@@ -2267,8 +2278,9 @@ MonoBehaviour:
   isGrounded: 1
   isUpright: 1
   moveRight: 0
-  uprightThreshold: 0.2
+  uprightThreshold: 0.7
   rotationSpeed: 10
+  hasEaten: 0
 --- !u!257 &1997261402
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -2301,6 +2313,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetJoint: {fileID: 0}
+--- !u!70 &1997261404
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997261395}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000002765905, y: -0.20209041}
+  m_Size: {x: 1.0000058, y: 0.60581356}
+  m_Direction: 1
 --- !u!1 &2059475040
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,6 +2340,9 @@ GameObject:
   - component: {fileID: 2059475043}
   - component: {fileID: 2059475042}
   - component: {fileID: 2059475041}
+  - component: {fileID: 2059475046}
+  - component: {fileID: 2059475045}
+  - component: {fileID: 2059475044}
   m_Layer: 0
   m_Name: Food
   m_TagString: Food
@@ -2402,3 +2433,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!257 &2059475044
+TargetJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059475040}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_Anchor: {x: 0, y: 0}
+  m_Target: {x: 1.1147593, y: 0.3343268}
+  m_AutoConfigureTarget: 1
+  m_MaxForce: 10000
+  m_DampingRatio: 1
+  m_Frequency: 5
+--- !u!114 &2059475045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059475040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3855b7e45fd874bbf6434fb0cabd00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetJoint: {fileID: 2059475044}
+--- !u!50 &2059475046
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059475040}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

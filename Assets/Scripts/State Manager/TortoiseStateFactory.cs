@@ -17,10 +17,10 @@ namespace PetGame
         {
             return new TortoiseHappyState(_context, this);
         }
-        public TortoiseBaseState Playing()
+        /*public TortoiseBaseState Playing()
         {
             return new TortoisePlayingState(_context, this);
-        }
+        }*/
         public TortoiseBaseState Eating()
         {
             return new TortoiseEatingState(_context, this);

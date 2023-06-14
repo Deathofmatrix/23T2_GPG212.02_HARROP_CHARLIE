@@ -32,6 +32,7 @@ namespace PetGame
         public bool moveRight;
         public float uprightThreshold = 0.6f;
         public float rotationSpeed;
+        public bool hasEaten;
 
         private void Awake()
         {
@@ -78,10 +79,10 @@ namespace PetGame
             }
         }
 
-        public void SwitchToPlaying()
+        /*public void SwitchToPlaying()
         {
             CurrentState.SwitchStatePublic(states.Playing());
-        }
+        }*/
 
         public void SwitchToEating()
         {
