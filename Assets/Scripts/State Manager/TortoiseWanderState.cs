@@ -13,7 +13,7 @@ namespace PetGame
 
         public override void EnterState()
         {
-
+            Debug.Log("Wander RN rn");
         }
 
         public override void UpdateState()
@@ -33,12 +33,12 @@ namespace PetGame
 
         public override void ExitState()
         {
-            _ctx.speed = 0; 
+            _ctx.speed = 0;
+            _ctx.animator.SetBool("isMoving", false);
         } 
 
-        public override void OnCollisionEnter()
+        public override void OnCollisionEnter(Collision2D collision)
         {
-            
         }
 
         private void PickNextAction()
@@ -47,11 +47,11 @@ namespace PetGame
 
             if (pick == 0)
             {
-                Move(true);
+                Move();
             }
             else if (pick == 1)
             {
-                Move(false);
+                Move();
             }
             else if (pick == 2)
             {
@@ -61,12 +61,12 @@ namespace PetGame
             Debug.Log(pick);
         }
 
-        private void Move(bool moveRight)
+        private void Move()
         {
-            _ctx.speed = moveRight ? 3 : -3;
+            _ctx.speed = _ctx.moveRight ? 3 : -3;
             _ctx.isMoving = true;
             _ctx.animator.SetBool("isMoving", true);
-            _ctx.spriteRenderer.flipX = !moveRight;
+            _ctx.spriteRenderer.flipX = !_ctx.moveRight;
         }
 
         private void Idle()

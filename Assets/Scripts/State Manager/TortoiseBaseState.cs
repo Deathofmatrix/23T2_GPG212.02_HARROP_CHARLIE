@@ -17,7 +17,7 @@ namespace PetGame
 
         public abstract void ExitState();
 
-        public abstract void OnCollisionEnter();
+        public abstract void OnCollisionEnter(Collision2D collision);
 
         protected void SwitchState(TortoiseBaseState newState)
         {
@@ -26,6 +26,11 @@ namespace PetGame
             newState.EnterState();
 
             _ctx.CurrentState = newState;
+        }
+
+        public void SwitchStatePublic(TortoiseBaseState newState)
+        {
+            SwitchState(newState);
         }
     }
 }

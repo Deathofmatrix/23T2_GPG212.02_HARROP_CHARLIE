@@ -25,5 +25,13 @@ namespace PetGame
         {
             return new TortoiseEatingState(_context, this);
         }
+        public TortoiseBaseState Airborn()
+        {
+            return new TortoiseAirbornState(_context, this);
+        }
+        public TortoiseBaseState Righting()
+        {
+            return new TortoiseRightingState(_context, this);
+        }
     }
 }
