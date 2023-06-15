@@ -65,8 +65,12 @@ namespace PetGame
                 SwitchToAirborn();
             }
 
-
             currentState.UpdateState();
+        }
+
+        private void FixedUpdate()
+        {
+            Debug.Log(Time.deltaTime);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

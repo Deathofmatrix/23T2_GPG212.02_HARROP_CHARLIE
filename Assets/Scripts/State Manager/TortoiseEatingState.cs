@@ -16,7 +16,7 @@ namespace PetGame
                 _ctx.food.SetActive(true);
             }
             
-            _ctx.speed = 3;
+            _ctx.speed = 1.5f;
             _ctx.hasEaten = false;
             _ctx.animator.SetBool("isEating", false);
         }
