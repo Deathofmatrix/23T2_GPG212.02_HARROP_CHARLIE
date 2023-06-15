@@ -70,7 +70,7 @@ namespace PetGame
 
         private void Move()
         {
-            _ctx.speed = _ctx.moveRight ? 3 : -3;
+            _ctx.speed = _ctx.moveRight ? 1 : -1;
             _ctx.isMoving = true;
             _ctx.animator.SetBool("isMoving", true);
             _ctx.spriteRenderer.flipX = !_ctx.moveRight;

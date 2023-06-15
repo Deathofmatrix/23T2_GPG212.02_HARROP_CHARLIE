@@ -43,13 +43,11 @@ namespace PetGame
         private void Awake()
         {
             states = new TortoiseStateFactory(this);
-            Camera mainCamera = Camera.main;
-            audioManger = FindObjectOfType<AudioManager>();
-            ball = GameObject.Find("Ball");
+            mainCamera = Camera.main;
         }
 
         private void Start()
-        { 
+        {
             currentState = states.Wander();
             
             currentState.EnterState();
@@ -58,14 +56,18 @@ namespace PetGame
 
         private void Update()
         {
+            audioManger = FindObjectOfType<AudioManager>();
+
             IsUpright();
 
             if (!isGrounded && !isAirborn)
             {
                 SwitchToAirborn();
             }
+        }
 
-
+        private void FixedUpdate()
+        {
             currentState.UpdateState();
         }
 

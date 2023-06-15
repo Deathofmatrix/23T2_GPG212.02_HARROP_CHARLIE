@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: MainTheme
-    clip: {fileID: 8300000, guid: 63b4b54295973064f90e8dd2f53d7c45, type: 3}
+    clip: {fileID: 8300000, guid: d2ca6934bfeb9c341a6a704e1974af4c, type: 3}
     volume: 0.5
     pitch: 1
     loop: 1
@@ -78,7 +78,7 @@ MonoBehaviour:
   - name: TortoiseBounce
     clip: {fileID: 8300000, guid: 227f31dda8878aa49a5bbc063dce9a2b, type: 3}
     volume: 0.62
-    pitch: 1
+    pitch: 0.675
     loop: 0
     source: {fileID: 0}
   mainStart:

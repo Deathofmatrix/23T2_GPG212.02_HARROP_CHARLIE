@@ -16,9 +16,10 @@ namespace PetGame
                 _ctx.food.SetActive(true);
             }
             
-            _ctx.speed = 3;
+            _ctx.speed = 1;
             _ctx.hasEaten = false;
             _ctx.animator.SetBool("isEating", false);
+            _ctx.animator.SetBool("isMoving", true);
         }
 
         public override void UpdateState()
@@ -59,6 +60,7 @@ namespace PetGame
                 _ctx.audioManger.Play("Eating");
                 _ctx.speed = 0;
                 _ctx.food.SetActive(false);
+                _ctx.animator.SetBool("isMoving", false);
                 _ctx.animator.SetBool("isEating", true);
 
                 _ctx.hasEaten = true;
