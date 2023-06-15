@@ -1,9 +1,9 @@
 using System.Collections;
-using UnityEditor.U2D.Path.GUIFramework;
+//using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
+//using static UnityEngine.Rendering.DebugUI;
 using UnityEngine.Rendering;
-using static UnityEngine.RuleTile.TilingRuleOutput;
+//using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace PetGame
 {
@@ -28,6 +28,11 @@ namespace PetGame
             if (_ctx.isMoving)
             {
                 _ctx.rigidBody2D.MovePosition(_ctx.rigidBody2D.position + Vector2.right * _ctx.speed * Time.deltaTime);
+            }
+
+            if ( _ctx.food.activeInHierarchy )
+            {
+                SwitchState(_factory.Eating());
             }
         }
 

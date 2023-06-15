@@ -1,3 +1,4 @@
+using EasyAudioSystem;
 using PetGame;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,9 @@ namespace PetGame
         public GameObject ball;
         public GameObject food;
         public Camera mainCamera;
+        public AudioManager audioManger;
+        public GameObject timer;
+        public GameObject particles;
 
         public float movementTimer;
         public float movementDuration = 1f;
@@ -33,11 +37,15 @@ namespace PetGame
         public float uprightThreshold = 0.6f;
         public float rotationSpeed;
         public bool hasEaten;
+        public bool isAirborn;
+        public float timerTime;
 
         private void Awake()
         {
             states = new TortoiseStateFactory(this);
             Camera mainCamera = Camera.main;
+            audioManger = FindObjectOfType<AudioManager>();
+            ball = GameObject.Find("Ball");
         }
 
         private void Start()
@@ -52,7 +60,7 @@ namespace PetGame
         {
             IsUpright();
 
-            if (!isGrounded)
+            if (!isGrounded && !isAirborn)
             {
                 SwitchToAirborn();
             }

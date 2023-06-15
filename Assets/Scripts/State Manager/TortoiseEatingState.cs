@@ -1,3 +1,4 @@
+using EasyAudioSystem;
 using UnityEngine;
 
 namespace PetGame
@@ -8,9 +9,13 @@ namespace PetGame
         public override void EnterState()
         {
             Debug.Log("Eating rn");
-            _ctx.food.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            _ctx.food.transform.position = new Vector2(_ctx.food.transform.position.x, 3);
-            _ctx.food.SetActive(true);
+            if (_ctx.hasEaten)
+            {
+                _ctx.food.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                _ctx.food.transform.position = new Vector2(_ctx.food.transform.position.x, 3);
+                _ctx.food.SetActive(true);
+            }
+            
             _ctx.speed = 3;
             _ctx.hasEaten = false;
             _ctx.animator.SetBool("isEating", false);
@@ -25,10 +30,9 @@ namespace PetGame
             direction.x = Mathf.Clamp(direction.x, -1, 1);
 
             _ctx.spriteRenderer.flipX = direction.x < 0;
+            FlipParticles();
             //Debug.Log(direction);
             _ctx.rigidBody2D.MovePosition(_ctx.rigidBody2D.position + direction * _ctx.speed * Time.deltaTime);
-
-
 
             _ctx.movementTimer += Time.deltaTime;
 
@@ -43,13 +47,16 @@ namespace PetGame
         public override void ExitState()
         {
             _ctx.animator.SetBool("isEating", false);
-            _ctx.hasEaten = false;
+            //_ctx.hasEaten = false;
+            _ctx.particles.GetComponent<ParticleSystem>().Stop();
         }
 
         public override void OnCollisionEnter(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Food"))
             {
+                _ctx.particles.GetComponent<ParticleSystem>().Play();
+                _ctx.audioManger.Play("Eating");
                 _ctx.speed = 0;
                 _ctx.food.SetActive(false);
                 _ctx.animator.SetBool("isEating", true);
@@ -57,6 +64,18 @@ namespace PetGame
                 _ctx.hasEaten = true;
 
                 _ctx.movementTimer = 0;
+            }
+        }
+
+        private void FlipParticles()
+        {
+            if (_ctx.spriteRenderer.flipX)
+            {
+                _ctx.particles.transform.localPosition = new Vector3(-0.56056f, -0.4060201f, 0);
+            }
+            else if (!_ctx.spriteRenderer.flipX)
+            {
+                _ctx.particles.transform.localPosition = new Vector3(0.56056f, -0.4060201f, 0);
             }
         }
 
